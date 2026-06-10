@@ -5,7 +5,7 @@
 /* ============================================================
    SCROLLYTELLING (500vh, video scrub)
    ============================================================ */
-.scrolly { position: relative; height: 500vh; background: var(--carbon-deep); }
+.scrolly { position: relative; height: 290vh; background: var(--carbon-deep); }
 .scrolly-sticky {
   position: sticky; top: 0;
   height: 100vh; height: 100svh;
@@ -14,11 +14,15 @@
 .scrolly-sticky video {
   position: absolute; inset: 0;
   width: 100%; height: 100%; object-fit: cover;
+  /* recorte: empuja la marca de agua (esquina inferior derecha) fuera del encuadre */
+  transform: scale(1.16);
+  transform-origin: 32% 30%;
 }
 .scrolly-shade {
   position: absolute; inset: 0;
   background: linear-gradient(to right, rgba(15,16,17,0.78) 0%, rgba(15,16,17,0.35) 46%, rgba(15,16,17,0.1) 100%),
-              linear-gradient(to top, rgba(15,16,17,0.6) 0%, transparent 30%);
+              linear-gradient(to top, rgba(15,16,17,0.6) 0%, transparent 30%),
+              radial-gradient(38% 30% at 100% 100%, rgba(15,16,17,0.8), transparent 70%);
 }
 
 .scrolly-ui {
@@ -91,8 +95,8 @@
 .serv-list { border-top: 1px solid var(--linea); }
 .serv-item {
   display: grid;
-  grid-template-columns: 56px 1fr auto;
-  gap: 20px; align-items: start;
+  grid-template-columns: 1fr;
+  gap: 6px; align-items: start;
   padding: 30px 8px 30px 0;
   border-bottom: 1px solid var(--linea);
   cursor: pointer;
@@ -168,6 +172,7 @@
   height: 100vh; height: 100svh;
   overflow: hidden;
   display: flex; flex-direction: column; justify-content: center;
+  padding-bottom: clamp(20px, 4vh, 48px);
 }
 .showcase-head {
   width: var(--wrap); margin-inline: auto;
@@ -186,7 +191,10 @@
   width: max-content;
 }
 .sc-card {
-  width: clamp(300px, 38vw, 560px);
+  /* ancho limitado también por la altura del viewport para que
+     la fila de captions nunca quede bajo el borde inferior */
+  width: min(clamp(300px, 38vw, 560px), calc((100svh - 480px) * 1.3333));
+  min-width: 220px;
   flex-shrink: 0;
 }
 .sc-media {
@@ -199,17 +207,31 @@
   filter: saturate(0.85);
 }
 .sc-card:hover .sc-media img { transform: scale(1.12); filter: saturate(1.1); }
-.sc-card figcaption { padding-top: 18px; display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; }
+.sc-card figcaption { padding-top: 18px; display: grid; gap: 6px; }
 .sc-num { color: var(--cyan); padding-top: 5px; }
 .sc-card h3 {
   font-size: clamp(20px, 1.8vw, 26px); font-weight: 750; font-stretch: 108%;
   text-transform: uppercase;
 }
-.sc-card p { grid-column: 2; color: var(--acero); font-size: 15px; }
+.sc-card p { color: var(--acero); font-size: 15px; }
 
 .sc-end {
   display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
   gap: 22px; padding-right: 10vw; min-width: 320px;
+}
+
+/* Viewports bajos: compacta cabecera y captions del showcase */
+@media (max-height: 660px) and (min-width: 721px) {
+  .showcase-head {
+    padding-top: calc(var(--header-h) + 4px);
+    margin-bottom: 14px;
+  }
+  .showcase-head .eyebrow { margin-bottom: 10px; }
+  .showcase-head .sec-title { font-size: clamp(30px, 4vw, 48px); }
+  .sc-card { width: min(clamp(300px, 38vw, 560px), calc((100svh - 380px) * 1.3333)); }
+  .sc-card figcaption { padding-top: 10px; }
+  .sc-card h3 { font-size: 18px; }
+  .sc-card p { font-size: 13px; }
 }
 .sc-end .btn-ghost-dark { border-color: rgba(245,247,249,0.4); color: var(--blanco); }
 .sc-end .btn-ghost-dark::before { background: var(--blanco); }
@@ -240,7 +262,7 @@
 .cal-lead strong { color: var(--ambar); font-weight: 700; }
 .cal-list { display: grid; gap: 0; border-top: 1px solid var(--linea-dark); }
 .cal-list li {
-  display: grid; grid-template-columns: 64px 1fr; gap: 18px;
+  display: block;
   padding: 18px 0; border-bottom: 1px solid var(--linea-dark);
   color: rgba(245,247,249,0.8); font-size: 16px;
 }
@@ -377,10 +399,13 @@
 @media (max-width: 1024px) {
   .main-nav { display: none; }
   .nav-toggle { display: flex; }
-  .manifiesto-grid { grid-template-columns: 1fr; }
-  .man-side { padding-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: end; }
-  .man-figure img { aspect-ratio: 4 / 3; }
-  .man-side .mf-note { margin-top: 0; padding-bottom: 8px; }
+  .manifiesto-grid { grid-template-columns: 1fr; gap: 48px; }
+  .man-pillars { grid-template-columns: 1fr; gap: 0; }
+  .pillar { padding: 22px 0; }
+  .man-photo {
+    margin-inline: calc((min(92vw, 1320px) - 100vw) / 2);
+    height: clamp(260px, 44vh, 420px);
+  }
   .serv-layout { grid-template-columns: 1fr; }
   .serv-visual { position: relative; top: 0; order: -1; aspect-ratio: 16 / 10; }
   .calidad-grid { grid-template-columns: 1fr; }
@@ -390,11 +415,8 @@
 @media (max-width: 720px) {
   body { font-size: 16px; }
   .btn-header { display: none; }
-  .man-side { grid-template-columns: 1fr; }
-  .man-figure::after { right: -8px; bottom: -8px; }
-  .hero { height: 150vh; }
   .hero-title { font-size: clamp(48px, 14.5vw, 80px); }
-  .scrolly { height: 420vh; }
+  .scrolly { height: 260vh; }
   .scrolly-progress { display: none; }
   .ch-title { font-size: clamp(38px, 11vw, 56px); }
   /* showcase becomes native horizontal scroll */
@@ -405,7 +427,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
-  .sc-card { width: 78vw; scroll-snap-align: start; }
+  .sc-card { width: 78vw; min-width: 0; scroll-snap-align: start; }
   .iso-stamp { top: -22px; right: 8px; width: 88px; height: 88px; font-size: 13px; }
   .con-list li { grid-template-columns: 1fr; gap: 4px; }
 }

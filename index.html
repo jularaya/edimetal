@@ -39,12 +39,12 @@
 <!-- Mobile overlay menu -->
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <nav class="mobile-nav" aria-label="Menú móvil">
-    <a href="#servicios" data-anchor="#servicios"><span class="mm-i">01</span>Servicios</a>
-    <a href="#proceso" data-anchor="#proceso"><span class="mm-i">02</span>Proceso</a>
-    <a href="#capacidades" data-anchor="#capacidades"><span class="mm-i">03</span>Capacidades</a>
-    <a href="#calidad" data-anchor="#calidad"><span class="mm-i">04</span>Calidad</a>
-    <a href="#clientes" data-anchor="#clientes"><span class="mm-i">05</span>Clientes</a>
-    <a href="#contacto" data-anchor="#contacto"><span class="mm-i">06</span>Contacto</a>
+    <a href="#servicios" data-anchor="#servicios">Servicios</a>
+    <a href="#proceso" data-anchor="#proceso">Proceso</a>
+    <a href="#capacidades" data-anchor="#capacidades">Capacidades</a>
+    <a href="#calidad" data-anchor="#calidad">Calidad</a>
+    <a href="#clientes" data-anchor="#clientes">Clientes</a>
+    <a href="#contacto" data-anchor="#contacto">Contacto</a>
   </nav>
   <div class="mobile-menu-foot">
     <p class="mono">contacto@edimetal.cl</p>
@@ -58,8 +58,8 @@
 <section class="hero" id="inicio" data-screen-label="Hero">
   <div class="hero-sticky">
     <div class="hero-media" id="heroMedia">
-      <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="uploads/01-hero-montaje-industrial-4k.png">
-        <source src="uploads/hero.mp4" type="video/mp4"></source>
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="uploads/01-hero-montaje-industrial-4k.png">
+        <source src="uploads/Industrial_image_with_subtle_mov..._202606101625.mp4" type="video/mp4"></source>
       </video>
       <div class="hero-overlay"></div>
       <!-- technical frame, revealed on scroll -->
@@ -74,9 +74,6 @@
     </div>
 
     <div class="hero-content" id="heroContent">
-      <p class="hero-kicker mono" data-reveal>
-        <span class="dot" aria-hidden="true"></span>Diseño · Fabricación · Montaje — Bío Bío, Chile
-      </p>
       <h1 class="hero-title" aria-label="Ingeniería que toma forma">
         <span class="ht-line"><span class="ht-word">Ingeniería</span></span>
         <span class="ht-line"><span class="ht-word">que toma</span></span>
@@ -92,11 +89,7 @@
       </div>
     </div>
 
-    <div class="hero-hud mono" aria-hidden="true">
-      <span class="hud-item">EDIMETAL SPA</span>
-      <span class="hud-item hud-scroll">SCROLL<span class="hud-line"></span></span>
-      <span class="hud-item">ISO 9001:2015</span>
-    </div>
+    <div class="hero-hud mono" aria-hidden="true" style="display:none"></div>
   </div>
 </section>
 
@@ -104,21 +97,48 @@
 <section class="manifiesto" id="manifiesto" data-screen-label="Manifiesto">
   <div class="wrap manifiesto-grid">
     <div class="man-copy">
-      <p class="eyebrow mono" data-reveal><span class="e-num">§01</span> Manifiesto</p>
-      <p class="scrub-text" id="scrubText">
-        Convertimos cálculo, acero y oficio en estructuras precisas, seguras y durables.
-        Cada viga se modela antes de cortarse, cada cordón de soldadura se verifica,
-        cada montaje se planifica al milímetro.
+      <p class="eyebrow mono" data-reveal>La empresa</p>
+      <h2 class="man-title" data-split>Estructuras <em>precisas</em>,<br></br><em>seguras</em> y <em>durables</em>.</h2>
+      <p class="man-lead" data-reveal>
+        Somos una empresa de ingeniería y construcción metálica de la Región del Bío Bío.
+        Integramos diseño, fabricación, montaje y mantención bajo un mismo sistema de
+        gestión — del modelo BIM al último perno en terreno.
       </p>
-      <p class="mf-meta mono" data-reveal>DESDE EL BÍO BÍO PARA TODO CHILE</p>
     </div>
-    <aside class="man-side">
-      <figure class="man-figure" data-reveal data-prlx="-40">
-        <img src="uploads/01-hero-montaje-industrial-4k.png" alt="Izaje de viga principal en montaje nocturno" loading="lazy" decoding="async"></img>
-        <figcaption class="mono">FIG. 01 — IZAJE DE VIGA PRINCIPAL</figcaption>
-      </figure>
-      <p class="mf-note" data-reveal>Ingeniería de detalle, taller propio y equipos de terreno bajo un mismo sistema de gestión.</p>
-    </aside>
+    <figure class="man-photo" data-reveal>
+      <img src="uploads/01-hero-montaje-industrial-4k.png" alt="Izaje de viga principal en montaje nocturno" loading="lazy" decoding="async" data-prlx="-44"></img>
+    </figure>
+  </div>
+  <div class="wrap man-pillars">
+    <div class="pillar" data-reveal>
+      <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle class="pi-draw" cx="24" cy="24" r="14"></circle>
+        <line class="pi-draw" x1="24" y1="2" x2="24" y2="14"></line>
+        <line class="pi-draw" x1="24" y1="34" x2="24" y2="46"></line>
+        <line class="pi-draw" x1="2" y1="24" x2="14" y2="24"></line>
+        <line class="pi-draw" x1="34" y1="24" x2="46" y2="24"></line>
+        <circle class="pi-dot" cx="24" cy="24" r="2.5"></circle>
+      </svg>
+      <h3>Precisión</h3>
+      <p>Ingeniería de detalle y modelación BIM antes de cortar el primer perfil.</p>
+    </div>
+    <div class="pillar" data-reveal>
+      <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path class="pi-draw" d="M24 3 L42 10 V24 C42 35 34 42 24 45 C14 42 6 35 6 24 V10 Z"></path>
+        <path class="pi-draw pi-check" d="M16 24 L22 30 L33 18"></path>
+      </svg>
+      <h3>Seguridad</h3>
+      <p>Protocolos estrictos de trabajo en taller y terreno, sin excepciones.</p>
+    </div>
+    <div class="pillar" data-reveal>
+      <svg class="pillar-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <path class="pi-draw" d="M24 3 L42 13.5 V34.5 L24 45 L6 34.5 V13.5 Z"></path>
+        <path class="pi-draw" d="M24 14 L33 19.25 V29.75 L24 35 L15 29.75 V19.25 Z"></path>
+        <circle class="pi-dot" cx="24" cy="24.5" r="2.5"></circle>
+      </svg>
+      <h3>Durabilidad</h3>
+      <p>Calidad certificada ISO 9001:2015 en cada estructura entregada.</p>
+    </div>
   </div>
   <!-- structural truss that draws itself -->
   <div class="truss-wrap" aria-hidden="true">
@@ -140,30 +160,25 @@
 <section class="scrolly" id="proceso" data-screen-label="Proceso scrollytelling">
   <div class="scrolly-sticky" id="scrollySticky">
     <video id="scrollyVideo" muted playsinline preload="auto">
-      <source src="uploads/scrollytelling.mp4" type="video/mp4"></source>
+      <source src="uploads/Factory_assembly_with_welding_202606101603.mp4" type="video/mp4"></source>
     </video>
     <div class="scrolly-shade"></div>
 
     <div class="scrolly-ui">
-      <p class="scrolly-kicker mono"><span class="e-num">§02</span> El ciclo completo</p>
       <div class="scrolly-chapters" id="scrollyChapters">
         <article class="chapter" data-chapter="0">
-          <p class="ch-index mono">01 / 04</p>
           <h3 class="ch-title">Diseño</h3>
           <p class="ch-text">Modelación BIM y análisis FEM anticipan cada esfuerzo antes de cortar el primer perfil.</p>
         </article>
         <article class="chapter" data-chapter="1">
-          <p class="ch-index mono">02 / 04</p>
           <h3 class="ch-title">Fabricación</h3>
           <p class="ch-text">Taller propio y soldadores calificados convierten los planos de detalle en piezas exactas.</p>
         </article>
         <article class="chapter" data-chapter="2">
-          <p class="ch-index mono">03 / 04</p>
           <h3 class="ch-title">Control de calidad</h3>
           <p class="ch-text">Cada unión se inspecciona y se libera bajo el sistema de gestión certificado ISO 9001:2015.</p>
         </article>
         <article class="chapter" data-chapter="3">
-          <p class="ch-index mono">04 / 04</p>
           <h3 class="ch-title">Montaje</h3>
           <p class="ch-text">Maniobras planificadas y equipos de terreno llevan la estructura a su posición definitiva.</p>
         </article>
@@ -183,43 +198,35 @@
 <section class="servicios" id="servicios" data-screen-label="Servicios">
   <div class="wrap">
     <header class="sec-head">
-      <p class="eyebrow mono" data-reveal><span class="e-num">§03</span> Servicios</p>
+      <p class="eyebrow mono" data-reveal>Servicios</p>
       <h2 class="sec-title" data-split>Todo el acero,<br></br>una sola mano.</h2>
     </header>
 
     <div class="serv-layout">
       <div class="serv-list" id="servList" role="list">
         <article class="serv-item is-active" data-serv="0" role="listitem" tabindex="0">
-          <span class="si-index mono">01</span>
           <div class="si-body">
             <h3 class="si-title">Diseño e ingeniería</h3>
             <p class="si-text">Modelación BIM, cálculo estructural y análisis por elementos finitos. Ingeniería de detalle lista para fabricar.</p>
           </div>
-          <span class="si-tag mono">BIM · FEM</span>
         </article>
         <article class="serv-item" data-serv="1" role="listitem" tabindex="0">
-          <span class="si-index mono">02</span>
           <div class="si-body">
             <h3 class="si-title">Fabricación</h3>
             <p class="si-text">Estructuras pesadas y livianas, cubiertas, escaleras, plataformas y productos especiales en taller propio.</p>
           </div>
-          <span class="si-tag mono">TALLER</span>
         </article>
         <article class="serv-item" data-serv="2" role="listitem" tabindex="0">
-          <span class="si-index mono">03</span>
           <div class="si-body">
             <h3 class="si-title">Montaje</h3>
             <p class="si-text">Montaje industrial con planificación de maniobras, supervisión permanente y protocolos de seguridad en terreno.</p>
           </div>
-          <span class="si-tag mono">TERRENO</span>
         </article>
         <article class="serv-item" data-serv="3" role="listitem" tabindex="0">
-          <span class="si-index mono">04</span>
           <div class="si-body">
             <h3 class="si-title">Mantención</h3>
             <p class="si-text">Mantención de estructuras e instalaciones industriales para asegurar la continuidad operativa de tu planta.</p>
           </div>
-          <span class="si-tag mono">PLANTA</span>
         </article>
       </div>
 
@@ -246,7 +253,7 @@
         <figure class="sv-img" data-serv="3">
           <img src="uploads/14-capacidad-taller-4k.png" alt="" loading="lazy" decoding="async"></img>
         </figure>
-        <span class="sv-caption mono" id="svCaption">FIG. 03 — MODELO BIM SOBRE ACERO</span>
+        <span class="sv-caption mono" id="svCaption" style="display:none"></span>
       </div>
     </div>
   </div>
@@ -256,15 +263,13 @@
 <section class="showcase" id="capacidades" data-screen-label="Capacidades showcase">
   <div class="showcase-sticky">
     <header class="showcase-head">
-      <p class="eyebrow mono" data-reveal><span class="e-num">§04</span> Capacidades y sectores</p>
+      <p class="eyebrow mono" data-reveal>Capacidades y sectores</p>
       <h2 class="sec-title" data-split>Donde el acero trabaja.</h2>
-      <p class="showcase-hint mono" aria-hidden="true">SCROLL →</p>
     </header>
     <div class="showcase-track" id="showcaseTrack">
       <figure class="sc-card">
         <div class="sc-media"><img src="uploads/02-puente-modular-4k.png" alt="Puente modular metálico sobre río" loading="lazy" decoding="async"></img></div>
         <figcaption>
-          <span class="sc-num mono">A·01</span>
           <h3>Infraestructura vial</h3>
           <p>Puentes modulares y obras de conectividad.</p>
         </figcaption>
@@ -272,7 +277,6 @@
       <figure class="sc-card">
         <div class="sc-media"><img src="uploads/07-nave-industrial-4k.png" alt="Nave industrial con estructura metálica" loading="lazy" decoding="async"></img></div>
         <figcaption>
-          <span class="sc-num mono">A·02</span>
           <h3>Edificación industrial</h3>
           <p>Naves, galpones y edificios de gran luz.</p>
         </figcaption>
@@ -280,7 +284,6 @@
       <figure class="sc-card">
         <div class="sc-media"><img src="uploads/08-proyecto-agricola-4k.png" alt="Planta agroindustrial con silos" loading="lazy" decoding="async"></img></div>
         <figcaption>
-          <span class="sc-num mono">A·03</span>
           <h3>Agroindustria</h3>
           <p>Plantas, silos y estructuras para el agro.</p>
         </figcaption>
@@ -288,7 +291,6 @@
       <figure class="sc-card">
         <div class="sc-media"><img src="uploads/13-proyecto-industrial-proceso-4k.png" alt="Estructuras de planta de procesos" loading="lazy" decoding="async"></img></div>
         <figcaption>
-          <span class="sc-num mono">A·04</span>
           <h3>Procesos industriales</h3>
           <p>Estructuras de planta y soportes de equipos.</p>
         </figcaption>
@@ -296,13 +298,11 @@
       <figure class="sc-card">
         <div class="sc-media"><img src="uploads/09-productos-especiales-4k.png" alt="Productos especiales de acero fabricados a medida" loading="lazy" decoding="async"></img></div>
         <figcaption>
-          <span class="sc-num mono">A·05</span>
           <h3>Productos especiales</h3>
           <p>Fabricaciones a medida según tu especificación.</p>
         </figcaption>
       </figure>
       <div class="sc-end">
-        <p class="sc-end-note mono">VISUALES CONCEPTUALES DE CAPACIDAD</p>
         <a class="btn btn-ghost-dark magnetic" href="#contacto" data-anchor="#contacto"><span>Conversemos</span></a>
       </div>
     </div>
@@ -314,23 +314,22 @@
   <div class="hazard-line" aria-hidden="true"></div>
   <div class="wrap calidad-grid">
     <div class="cal-copy">
-      <p class="eyebrow mono" data-reveal><span class="e-num">§05</span> Calidad · Seguridad · Medio ambiente</p>
-      <h2 class="sec-title" data-split>Certificados para<br></br>no fallar.</h2>
+      <p class="eyebrow mono" data-reveal>Calidad · Seguridad · Medio ambiente</p>
+      <h2 class="sec-title" data-split>Certificada para<br></br>no fallar.</h2>
       <p class="cal-lead" data-reveal>
         Operamos bajo un sistema de gestión de calidad certificado
         <strong>ISO 9001:2015</strong> para el diseño, fabricación, montaje y
         mantención de estructuras metálicas.
       </p>
       <ul class="cal-list">
-        <li data-reveal><span class="cl-mark mono">QA</span>Trazabilidad de materiales y protocolos de soldadura en cada proyecto.</li>
-        <li data-reveal><span class="cl-mark mono">HSE</span>Seguridad y salud ocupacional como condición de partida en taller y terreno.</li>
-        <li data-reveal><span class="cl-mark mono">ENV</span>Gestión responsable de residuos y cuidado del entorno en cada faena.</li>
-        <li data-reveal><span class="cl-mark mono">KPI</span>Mejora continua: cada entrega alimenta el estándar de la siguiente.</li>
+        <li data-reveal>Trazabilidad de materiales y protocolos de soldadura en cada proyecto.</li>
+        <li data-reveal>Seguridad y salud ocupacional como condición de partida en taller y terreno.</li>
+        <li data-reveal>Gestión responsable de residuos y cuidado del entorno en cada faena.</li>
+        <li data-reveal>Mejora continua: cada entrega alimenta el estándar de la siguiente.</li>
       </ul>
     </div>
     <figure class="cal-figure" data-reveal>
       <img src="uploads/05-control-calidad-4k.png" alt="Inspección de calidad de soldadura en taller" loading="lazy" decoding="async"></img>
-      <figcaption class="mono">FIG. 05 — INSPECCIÓN DE UNIONES SOLDADAS</figcaption>
       <span class="iso-stamp mono" aria-hidden="true">ISO<br></br>9001<br></br>2015</span>
     </figure>
   </div>
@@ -339,7 +338,7 @@
 <!-- ============ CLIENTES ============ -->
 <section class="clientes" id="clientes" data-screen-label="Clientes">
   <div class="wrap">
-    <p class="eyebrow mono" data-reveal><span class="e-num">§06</span> Principales clientes</p>
+    <p class="eyebrow mono" data-reveal>Principales clientes</p>
     <h2 class="sec-title sec-title-sm" data-split>Confianza que se construye.</h2>
     <div class="client-grid" id="clientGrid" data-reveal>
       <!-- logos del sitio actual; se ocultan si no cargan -->
@@ -417,3 +416,10 @@
 <script src="assets/edimetal.js"></script>
 </body>
 </html>
+
+<style id="__om-edit-overrides">
+#calidad .cal-copy span:nth-child(1) >span { width: 628px !important }
+#calidad .cal-copy span:nth-child(1) >span { width: 6px !important }
+#calidad .cal-copy span:nth-child(1) >span { width: 670px !important }
+#calidad .cal-copy span:nth-child(1) >span { width: 67px !important }
+</style>

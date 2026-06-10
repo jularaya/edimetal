@@ -101,25 +101,28 @@
 
   function heroScroll() {
     if (RM) return;
-    var p = clamp(window.scrollY / (vh() * 0.7), 0, 1);
-    var e = 1 - Math.pow(1 - p, 2); // easeOutQuad
-    var inset = e * 3.2; // % hacia composición técnica
-    heroMedia.style.transform = "scale(" + (1 - e * 0.055) + ")";
-    heroMedia.style.clipPath = "inset(" + inset + "% " + inset + "% " + inset + "% " + inset + "%)";
-    heroFrame.style.opacity = String(clamp((p - 0.15) / 0.5, 0, 1));
-    heroContent.style.transform = "translateY(" + (-e * 90) + "px)";
-    heroContent.style.opacity = String(1 - clamp((p - 0.35) / 0.5, 0, 0.9));
+    var y = window.scrollY;
+    var h = vh();
+    if (y > h * 1.2) return;
+    // Parallax sutil: la imagen queda en su lugar, solo se desplaza
+    // levemente m\u00e1s lento que el scroll. Sin zoom ni re-encuadre.
+    heroMedia.style.transform = "translateY(" + (y * 0.22).toFixed(1) + "px)";
+    var p = clamp(y / (h * 0.9), 0, 1);
+    heroContent.style.transform = "translateY(" + (-p * 40).toFixed(1) + "px)";
+    heroContent.style.opacity = String(1 - clamp((p - 0.45) / 0.5, 0, 0.85));
   }
 
   /* ---------- Manifiesto: texto scrub ---------- */
   var scrub = document.getElementById("scrubText");
   var scrubWords = [];
   if (scrub) {
-    var keys = ["precisas,", "seguras", "durables.", "milímetro."];
+    var keys = ["precisas,", "seguras", "durables", "milímetro."];
+    var ki = 0;
     var words = scrub.textContent.trim().split(/\s+/);
     scrub.innerHTML = words.map(function (w) {
-      var k = keys.indexOf(w) > -1 ? " key" : "";
-      return '<span class="w' + k + '">' + w + "</span>";
+      var isKey = keys.indexOf(w) > -1;
+      var cls = isKey ? " key k" + (ki++) : "";
+      return '<span class="w' + cls + '">' + w + "</span>";
     }).join(" ");
     scrubWords = Array.prototype.slice.call(scrub.querySelectorAll(".w"));
   }
@@ -180,7 +183,7 @@
     var loadBlob = function () {
       if (blobLoaded || RM) return;
       blobLoaded = true;
-      fetch("uploads/scrollytelling.mp4")
+      fetch("uploads/Factory_assembly_with_welding_202606101603.mp4")
         .then(function (r) { return r.ok ? r.blob() : Promise.reject(); })
         .then(function (b) {
           var t = sVideo.currentTime || 0;
@@ -233,7 +236,7 @@
         if (!sVideo.paused) sVideo.pause();
       } else if (diff > 0 && diff < 2.8) {
         // Avance: reproduce hacia el objetivo — movimiento continuo
-        sVideo.playbackRate = clamp(0.55 + diff * 2.6, 0.4, 8);
+        sVideo.playbackRate = clamp(1.0 + diff * 4.2, 0.6, 12);
         if (sVideo.paused) {
           var pr = sVideo.play();
           if (pr && pr.catch) pr.catch(function () {});
@@ -258,17 +261,9 @@
   /* ---------- Servicios ---------- */
   var servItems = document.querySelectorAll(".serv-item");
   var servImgs = document.querySelectorAll(".sv-img");
-  var svCaption = document.getElementById("svCaption");
-  var captions = [
-    "FIG. 03 — MODELO BIM SOBRE ACERO",
-    "FIG. 04 — SOLDADURA CALIFICADA EN TALLER",
-    "FIG. 06 — MANIOBRA DE MONTAJE EN ALTURA",
-    "FIG. 14 — CAPACIDAD INSTALADA DE TALLER"
-  ];
   function setServ(i) {
     servItems.forEach(function (it) { it.classList.toggle("is-active", it.dataset.serv == i); });
     servImgs.forEach(function (im) { im.classList.toggle("is-active", im.dataset.serv == i); });
-    if (svCaption) svCaption.textContent = captions[i];
   }
   servItems.forEach(function (it) {
     var i = +it.dataset.serv;
